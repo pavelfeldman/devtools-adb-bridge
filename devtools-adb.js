@@ -134,9 +134,6 @@ function attach(itemElement)
     adbClient.forward(itemElement._serialNumber, itemElement._port, function(port) {
         itemElement._port = port;
         itemElement.textContent = itemElement._serialNumber + " :" + itemElement._port;
-        chrome.app.window.create("devtools-page.html?url=http://localhost:" + port, {
-            width: 800,
-            height: 600
-        });
+        document.getElementById("webview").setAttribute("src", "http://localhost:" + port);
     });
 }

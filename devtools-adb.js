@@ -117,11 +117,10 @@ function updateDevices()
             listElement.removeChild(toRemove[i]);
         for (var i = 0; i < serialNumbers.length; ++i) {
             var serialNumber = serialNumbers[i];
-            var itemElement = document.createElement("a");
+            var itemElement = document.createElement("div");
             itemElement._serialNumber = serialNumber;
             itemElement.textContent = serialNumber;
             itemElement.className = "item";
-            itemElement.href = "javascript:void()";
             itemElement.target = "_blank";
             itemElement.onclick = attach.bind(null, itemElement);
             listElement.appendChild(itemElement);

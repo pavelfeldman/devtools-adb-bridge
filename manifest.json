@@ -9,6 +9,7 @@
     }
   },
   "permissions": [
+    "webview",
     {"socket": [
       "tcp-connect:*:*"
     ]}

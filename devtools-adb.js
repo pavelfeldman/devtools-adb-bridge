@@ -122,6 +122,7 @@ function updateDevices()
             itemElement.textContent = serialNumber;
             itemElement.className = "item";
             itemElement.href = "javascript:void()";
+            itemElement.target = "_blank";
             itemElement.onclick = attach.bind(null, itemElement);
             listElement.appendChild(itemElement);
         }
@@ -133,6 +134,9 @@ function attach(itemElement)
     adbClient.forward(itemElement._serialNumber, itemElement._port, function(port) {
         itemElement._port = port;
         itemElement.textContent = itemElement._serialNumber + " :" + itemElement._port;
-        window.open("http://localhost:" + port);
+        chrome.app.window.create("devtools-page.html?url=http://localhost:" + port, {
+            width: 800,
+            height: 600
+        });
     });
 }
